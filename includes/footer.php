@@ -1,0 +1,2 @@
+</main><footer class="footer px-4 py-3">© <?= date('Y') ?> ResultHub · Secure Student Result Management System</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script><script src="<?= BASE_URL ?>/assets/js/app.js"></script></body></html>

@@ -1,0 +1,5 @@
+<?php
+require_once __DIR__.'/../includes/functions.php';require_role('admin');
+$rows=db()->query('SELECT a.*,u.username,u.name FROM audit_logs a LEFT JOIN users u ON u.user_id=a.user_id ORDER BY a.timestamp DESC LIMIT 300')->fetchAll();include __DIR__.'/../includes/header.php';?>
+<div class="card"><div class="card-header">Security and activity log <span class="small text-secondary fw-normal">· latest 300 events</span></div><div class="table-responsive"><table class="table mb-0"><thead><tr><th>Timestamp</th><th>User</th><th>Action</th><th>Old value</th><th>New value</th><th>IP address</th></tr></thead><tbody><?php foreach($rows as $r):?><tr><td><?=e($r['timestamp'])?></td><td><?=e($r['name']??'System')?> <span class="small text-secondary"><?=e($r['username']??'')?></span></td><td><?=e($r['action'])?></td><td><?=e($r['old_value']??'—')?></td><td><?=e($r['new_value']??'—')?></td><td><?=e($r['ip_address']??'')?></td></tr><?php endforeach;?></tbody></table></div></div>
+<?php include __DIR__.'/../includes/footer.php';?>
